@@ -11,16 +11,28 @@ public class ClassA {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @ManyToMany(mappedBy = "classA")
     private List<Student> students;
-
-
-
     public ClassA() {
     }
     public ClassA(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public ClassA(Long id, String name, List<Student> students) {
+        this.id = id;
+        this.name = name;
+        this.students = students;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public Long getId() {

@@ -24,6 +24,9 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.28'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+//    implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
 }
 
 tasks.named('test') {

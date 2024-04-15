@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Dashboard 2</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+
+</head>
+<body>
+<p>
+    <a href="/student">student list</a>
+</p>
+
+<div class="col-md-6" style="margin-left: 30%">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">ADD Student</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form th:action="@{/student/save}" th:object="${create}" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" th:field="*{name}"
+                           th:value="${error != null ? error.getBindingResult().getTarget().getName() : ''}">
+                    <span th:if="${error != null && error.hasFieldErrors('name')}"
+                          th:text="${error.getFieldError('name').getDefaultMessage()}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="gender" placeholder="Enter name" th:field="*{gender}"
+                           th:value="${error != null ? error.getBindingResult().getTarget().getGender() : ''}">
+                    <span th:if="${error != null && error.hasFieldErrors('gender')}"
+                          th:text="${error.getFieldError('name').getDefaultMessage()}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="date" name="name" class="form-control" id="date0fBirth" placeholder="Enter name" th:field="*{date0fBirth}"
+                           th:value="${error != null ? error.getBindingResult().getTarget().getDate0fBirth() : ''}">
+                    <span th:if="${error != null && error.hasFieldErrors('date0fBirth')}"
+                          th:text="${error.getFieldError('name').getDefaultMessage()}"></span>
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div th:each="row : ${error}">
+            <h3 th:text="${row.getDefaultMessage()}"></h3>
+        </div>
+    </div>
+</div>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.js"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="/plugins/raphael/raphael.min.js"></script>
+<script src="/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<!-- ChartJS -->
+<script src="/plugins/chart.js/Chart.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard2.js"></script>
+</body>
+</html>

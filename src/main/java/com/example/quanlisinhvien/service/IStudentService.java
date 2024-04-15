@@ -1,11 +1,12 @@
 package com.example.quanlisinhvien.service;
 
+import com.example.quanlisinhvien.dto.PaginateRequest;
+import com.example.quanlisinhvien.dto.StudentDto;
 import com.example.quanlisinhvien.model.Student;
-import org.hibernate.query.Page;
+import com.example.quanlisinhvien.reponsitory.IStudentRepository;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
-
-public interface IStudentService {
-    List<Student> findAll();
-    void save(Student student);
+public interface IStudentService  {
+    Page<Student> findAll(StudentDto studentDto, PaginateRequest paginateRequest);
+    IStudentRepository studentRepos();
 }

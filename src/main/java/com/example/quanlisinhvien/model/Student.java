@@ -1,19 +1,52 @@
 package com.example.quanlisinhvien.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 @Entity
 @Table(name="student")
+@EntityListeners(AuditingEntityListener.class)
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String student_name;
-    private String gender;
-    private String date0fBirth;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+        @NotBlank(message = "tên không được dể trống")
+        private String name;
+
+        @NotBlank(message = "giới tính không được dể trống")
+        private String gender;
+        @NotBlank(message = "ngày sinh không được dể trống")
+        private String date0fBirth;
+
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+    @Column(name = "updated_at")
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "student_classA",
@@ -38,12 +71,54 @@ public class Student {
     private List<Result> results;
 
 
+    public Student(Long id, String name, String gender, String date0fBirth, List<ClassA> classA, List<Subjects> subjects, List<Department> department, List<Result> results) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.date0fBirth = date0fBirth;
+        this.classA = classA;
+        this.subjects = subjects;
+        this.department = department;
+        this.results = results;
+    }
+
+    public List<ClassA> getClassA() {
+        return classA;
+    }
+
+    public void setClassA(List<ClassA> classA) {
+        this.classA = classA;
+    }
+
+    public List<Subjects> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subjects> subjects) {
+        this.subjects = subjects;
+    }
+
+    public List<Department> getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(List<Department> department) {
+        this.department = department;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
 
     public Student() {
     }
-    public Student(Long id, String student_name, String gender, String date0fBirth) {
+    public Student(Long id, String name, String gender, String date0fBirth) {
         this.id = id;
-        this.student_name = student_name;
+        this.name = name;
         this.gender = gender;
         this.date0fBirth = date0fBirth;
     }
@@ -56,12 +131,12 @@ public class Student {
         this.id = id;
     }
 
-    public String getStudent_name() {
-        return student_name;
+    public String getName() {
+        return name;
     }
 
-    public void setStudent_name(String student_name) {
-        this.student_name = student_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getGender() {

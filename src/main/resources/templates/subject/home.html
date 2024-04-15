@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Student</h1>
+<a href="/subject/create">Create new subject</a>
+<!--<div>-->
+<!--    <form th:action="@{/subject/search}" method="get" novalidate="novalidate">-->
+<!--        <input type="search" name="keyword">-->
+<!--        <input type="submit" value="search">-->
+<!--    </form>-->
+<!--</div>-->
+
+
+<table id="student" border="1px">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    <th:block th:each="row : ${subject}">
+        <tr>
+            <td th:text="${row.id}"></td>
+            <td th:text="${row.name}"></td>
+<!--            <td><a th:href="@{/student/update/__${students.id}__ }">Update</a></td>-->
+<!--            <td><a th:href="@{/student/delete/__${students.id}__ }">Delete</a></td>-->
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

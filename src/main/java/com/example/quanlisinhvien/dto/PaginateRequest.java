@@ -6,6 +6,9 @@ public class PaginateRequest {
     private int page;
     private String sortBy;
 
+
+
+
     public String getSortBy() {
         return sortBy;
     }

@@ -190,11 +190,13 @@
                                 <input type="hidden" name="size" th:value="${size}">
                                 <input type="hidden" name="sortBy" th:value="${param.sortBy}">
                                 <input type="hidden" name="direction" th:value="${direction}">
-                                <input type="text" name="name" class="form-control float-right" th:value="${param.name}" style="width: 50px"
+                                <input type="text" name="name" class="form-control float-right" th:value="${param.name}"
+                                       style="width: 50px"
                                        placeholder="Name">
                                 <input type="text" name="gender" class="form-control float-right" placeholder="Gender"
                                        th:value="${param.gender}" style="width: 50px">
-                                <input type="date" name="date0fBirth" class="form-control float-right" th:value="${param.date0fBirth}"
+                                <input type="date" name="date0fBirth" class="form-control float-right"
+                                       th:value="${param.date0fBirth}"
                                        placeholder="date0fBirth" style="width: 50px">
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-default">
@@ -223,11 +225,11 @@
                                     <td th:text="${student.name}"></td>
                                     <td th:text="${student.gender}"></td>
                                     <td th:text="${student.date0fBirth}"></td>
-<!--                                    <td th:text="${student.updatedAt}"></td>-->
-<!--                                    <td th:text="${student.createdAt}"></td>-->
+                                    <!--                                    <td th:text="${student.updatedAt}"></td>-->
+                                    <!--                                    <td th:text="${student.createdAt}"></td>-->
                                     <td>
                                     <td>
-                                    <a th:href="@{/student/update/{id}(id = ${student.id})}">Update</a></td>
+                                        <a th:href="@{/student/update/{id}(id = ${student.id})}">Update</a></td>
                                     <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target="#exampleModal">
@@ -252,7 +254,7 @@
                                                                 data-dismiss="modal">Close
                                                         </button>
                                                         <button type="button" class="btn btn-primary">
-<!--                                                            <a th:href="@{/student/delete/__${student.id}__ }">Delete</a>-->
+                                                            <!--                                                            <a th:href="@{/student/delete/__${student.id}__ }">Delete</a>-->
                                                             <a th:href="@{/student/delete/{id}(id = ${student.id})}">Delete</a>
                                                         </button>
                                                     </div>
@@ -264,11 +266,11 @@
                             </th:block>
                             </tbody>
                         </table>
-<!--                        <div>-->
-<!--                            <a th:href="@{'/student'(page=${students.number - 1})}" th:if="${students.hasPrevious()}">Previous</a>-->
-<!--                            <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>-->
-<!--                            <a th:href="@{'/student'(page=${students.number + 1})}" th:if="${students.hasNext()}">Next</a>-->
-<!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <a th:href="@{'/student'(page=${students.number - 1})}" th:if="${students.hasPrevious()}">Previous</a>-->
+                        <!--                            <span th:text="${students.number + 1}"></span>/<span th:text="${students.totalPages}"></span>-->
+                        <!--                            <a th:href="@{'/student'(page=${students.number + 1})}" th:if="${students.hasNext()}">Next</a>-->
+                        <!--                        </div>-->
                         <div class="card-footer clearfix">
                             <ul class="pagination pagination-sm m-0 float-right">
                                 <li th:each="i:${#numbers.sequence(pageBegin, pageEnd)}" class="page-item">
@@ -278,45 +280,34 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    </div>
-                    <!-- /.card-body -->
                 </div>
-                <!-- /.card -->
             </div>
         </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
     </div>
-    <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS -->
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="/dist/js/adminlte.js"></script>
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+</div>
 
-    <!-- PAGE PLUGINS -->
-    <!-- jQuery Mapael -->
-    <script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-    <script src="/plugins/raphael/raphael.min.js"></script>
-    <script src="/plugins/jquery-mapael/jquery.mapael.min.js"></script>
-    <script src="/plugins/jquery-mapael/maps/usa_states.min.js"></script>
-    <!-- ChartJS -->
-    <script src="/plugins/chart.js/Chart.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.js"></script>
 
-    <!-- AdminLTE for demo purposes -->
-    <script src="/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/dist/js/pages/dashboard2.js"></script>
+<script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="/plugins/raphael/raphael.min.js"></script>
+<script src="/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="/plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<!-- ChartJS -->
+<script src="/plugins/chart.js/Chart.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="/dist/js/pages/dashboard2.js"></script>
 </body>
 </html>
